@@ -74,7 +74,7 @@ public class TaskManager {
         }
     }
 
-    public List<Task> filterAndSearch(Date date , TaskPriority taskPriority, TaskStatus taskStatus) {
+    public List<Task> filterAndSearch(Date startDate, Date endDate , TaskPriority taskPriority, TaskStatus taskStatus) {
         synchronized (this){
             List<Task> allTasks = new ArrayList<>();
             for(Map.Entry<String, List<Task>> task:taskAssignDetails.entrySet())
@@ -84,7 +84,8 @@ public class TaskManager {
                 for(Task listTask : listOfTask) {
                     if(listTask.getTaskStatus().equals(taskStatus) &&
                             listTask.getTaskPriority().equals(taskPriority) &&
-                            listTask.getDate().equals(date)){
+                            listTask.getDate().compareTo(startDate) >=0 &&
+                            listTask.getDate().compareTo(endDate)<=0){
                         allTasks.add(listTask);
                     }
                 }

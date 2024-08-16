@@ -26,7 +26,7 @@ public class Main {
         taskManager.checkTaskStatus(user1.getUserId(), task1.getTaskId());
         taskManager.checkTaskStatus(user1.getUserId(), task3.getTaskId());
 //        taskManager.checkAllTask(user1.getUserId());
-        List<Task> Task =taskManager.filterAndSearch(new Date(),TaskPriority.MEDIUM, TaskStatus.CREATED);
+        List<Task> Task =taskManager.filterAndSearch(new Date(0),new Date(),TaskPriority.MEDIUM, TaskStatus.CREATED);
        for(Task task: Task){
            System.out.println(task);
        }
